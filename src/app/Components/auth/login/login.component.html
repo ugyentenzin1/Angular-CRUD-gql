@@ -1,0 +1,42 @@
+<section class="auth" style="display: flex; justify-content: center; align-items: center; height: 100dvh; position: relative;">
+  <form  [formGroup]="loginCredt" class="auth__content" style="width:30%; padding: 32px; box-shadow: 1px 1px 6px rgba(0,0,0,0.4);">
+    <div  style="display: flex; justify-content: center;">
+      <img src="../../../../assets/logo.svg" alt="LOGO"/>
+    </div>
+    <h1 style="text-align: center; font-weight: 900;">Sign In</h1>
+    <div style="display: flex; flex-direction: column;">
+      <mat-form-field class="example-full-width" appearance="outline" style="margin-bottom: 16px;">
+        <mat-label>Email</mat-label>
+        <input  matInput placeholder="Email Addresss..." formControlName="email" id="email" name="email">
+        <mat-error *ngIf="(loginCredt.get('email')?.invalid && loginCredt.get('email')?.touched) || loginCredt.get('email')?.dirty">
+          <ng-container *ngIf="loginCredt.get('email')?.errors?.['pattern']">
+            Email format is invalid
+          </ng-container>
+          <ng-container *ngIf="loginCredt.get('email')?.errors?.['required']">
+            Email is required
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+
+    
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input onpaste="return false;" ondrop="return false;" autocomplete="off" [type]="hide ? 'password' : 'text'" matInput placeholder="Password" formControlName="password" id="password" name="password">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="loginCredt.get('password')?.errors?.['required']">
+          Password field is required
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+    <button (click)="login()" type="button" mat-flat-button color="primary" style="width: 100%; margin-top: 56px" [disabled]="loginCredt.invalid">Login</button>
+  
+   <div style="display: flex; justify-content: space-between; margin-top: 32px">
+    <p>
+      Click <a class="text-red-600" [routerLink]="'register'">here</a> to
+      register
+    </p>
+    <p (click)="forgot()" style="cursor:pointer">Forgot your passsword</p>
+   </div>
+  </form>
+</section>

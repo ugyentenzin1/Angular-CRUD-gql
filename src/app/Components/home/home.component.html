@@ -1,0 +1,13 @@
+<mat-toolbar class="tb">
+  <span style="font-weight: bold">My App</span>
+  <ul style="display: flex; gap: 74px;list-style-type: none;">
+    <li class="list" [routerLink]="['crud']">CRUD</li>
+    <li class="list" [routerLink]="['about']">About</li>
+    <li class="list">Contact</li>
+  </ul>
+  <button (click)="logout()" title="Log out" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

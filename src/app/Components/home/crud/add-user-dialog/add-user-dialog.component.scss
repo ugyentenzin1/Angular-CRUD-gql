@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+
+  &-inp {
+    flex: 0 0 calc(50% - 8px);
+  }
+
+  .w-full {
+    width: 100%;
+  }
+
+  .mr-8 {
+    margin-right: 8px;
+  }
+}

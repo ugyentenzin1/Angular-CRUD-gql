@@ -1,0 +1,36 @@
+<section style="padding: 32px">
+  <h1>This is NOT about page</h1>
+  <h2>But rather a dictionary</h2>
+  <h4>Type keyword below to search...</h4>
+  <hr />
+
+  <form (ngSubmit)="onSubmit()" style="margin-bottom:32px">
+    <mat-form-field class="example-form-field">
+      <mat-label>Word to search..</mat-label>
+      <input matInput type="text" name="searchText" [(ngModel)]="searchText">
+      <button *ngIf="searchText" matSuffix mat-icon-button (click)="searchText=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field> <br>
+
+    <button [disabled]="!searchText?.length" color="primary" type="submit" mat-raised-button>Search</button>
+  </form>
+
+  <ng-container *ngIf="results; else noResult">
+    <ng-container *ngFor="let result of results; let i=index">
+      <h1 *ngIf="i===0">Word: {{result.word}}</h1>
+      <ng-container *ngFor="let meaning of result.meanings">
+        <h2>{{meaning.partOfSpeech | titlecase}}</h2>
+        <ol>
+          <li *ngFor="let def of meaning.definitions">
+            {{def.definition}}
+          </li>
+        </ol>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #noResult>
+    <h1>{{errorMessage}}</h1>
+  </ng-template>
+</section>
