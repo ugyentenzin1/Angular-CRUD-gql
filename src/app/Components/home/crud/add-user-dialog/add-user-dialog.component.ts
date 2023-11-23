@@ -39,10 +39,48 @@ export class AddUserDialogComponent implements OnInit {
     })
   }
 
+  // submitForm(): void {
+  //   if (this.addUserForm.valid) {
+  //     if (this.data) {
+  //       this._userService.updateUser(this.data.id, this.addUserForm.value).subscribe({
+  //         next: () => {
+  //           this._coreService.openSnackBar('Employee detail updated', 'Done')
+  //           this.dialogRef.close(true);
+  //         },
+  //         error: (err) => {
+  //           console.log(err)
+  //         }
+  //       });
+  //     }
+  //     else {
+  //       this._userService.addUser(this.addUserForm.value).subscribe({
+  //         next: () => {
+  //           this._coreService.openSnackBar('Employee added successfully')
+  //           this.dialogRef.close(true);
+  //         },
+  //         error: (err) => {
+  //           console.log(err)
+  //         }
+  //       });
+  //     }
+  //   }
+  // }
+
   submitForm() {
-    return this._userService.addUser(this.addUserForm.value).subscribe(() => {
-      this._coreService.openSnackBar('User added successfully', 'Done');
-      this.dialogRef.close(true);
-    })
+    if (this.addUserForm.valid) {
+      if (this.data) {
+        return this._userService.updateUser(this.data.id, this.addUserForm.value).subscribe(() => {
+          this._coreService.openSnackBar('User updated successfully', 'Done');
+          this.dialogRef.close(true);
+        })
+      }
+      else {
+        return this._userService.addUser(this.addUserForm.value).subscribe(() => {
+          this._coreService.openSnackBar('User added successfully', 'Done');
+          this.dialogRef.close(true);
+        })
+      }
+    }
+    return null;
   }
 }

@@ -29,21 +29,15 @@ export class CrudComponent implements OnInit {
 
   deleteUser(id: string) {
     const dialogRef = this.dialog.open(DeleteUserDialogComponent, {
-      data: { id: id },
+      data: { id },
       width: '20rem'
     });
     dialogRef.afterClosed().subscribe(val => val && this.getUserList());
   }
 
-  updateUser(data: IUser[]) {
+  openDialog(data?: IUser[]): void {
     this.dialog.open(AddUserDialogComponent, {
-      data: data
-    })
+      data
+    }).afterClosed().subscribe(val => val && this.getUserList());
   }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(AddUserDialogComponent);
-    dialogRef.afterClosed().subscribe(val => val && this.getUserList());
-  }
-
 }
