@@ -17,6 +17,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
 import { DeleteUserDialogComponent } from './crud/delete-user-dialog/delete-user-dialog.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { DeleteUserDialogComponent } from './crud/delete-user-dialog/delete-user
     MatInputModule,
     MatRadioModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class HomeModule { }

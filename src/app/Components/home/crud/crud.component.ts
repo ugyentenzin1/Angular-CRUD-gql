@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 import { IUser, UserService } from 'src/app/Services/user.service';
-import { CoreService } from 'src/app/Services/core.service';
 import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-crud',
@@ -12,10 +14,17 @@ import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dial
 })
 export class CrudComponent implements OnInit {
 
-  dataSource: IUser[] = [];
+  // dataSource: IUser[] = [];
+  dataSource!: MatTableDataSource<IUser>;
   displayedColumns: string[] = ['name', 'gender', 'role', 'review', 'actions'];
+  searchText!: string;
+  filteredList?: IUser[];
+  pageSizeOptions: number[] = [5, 10, 25, 100];
 
-  constructor(public dialog: MatDialog, private _userService: UserService, private _coreService: CoreService) { }
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(public dialog: MatDialog, private _userService: UserService) { }
 
   ngOnInit(): void {
     this.getUserList();
@@ -23,7 +32,9 @@ export class CrudComponent implements OnInit {
 
   getUserList(): void {
     this._userService.getUsers().subscribe((data) => {
-      this.dataSource = data;
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator; // Set the length for pagination
+      this.searchTable();
     })
   }
 
@@ -40,4 +51,12 @@ export class CrudComponent implements OnInit {
       data
     }).afterClosed().subscribe(val => val && this.getUserList());
   }
+
+  searchTable(): void {
+    this.filteredList = this.dataSource?.filteredData.filter((user:any) =>
+      user.firstName.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      user.lastName.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
+
 }

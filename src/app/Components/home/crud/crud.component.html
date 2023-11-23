@@ -1,8 +1,14 @@
 <section style="padding: 32px">
   <h1>User Lists</h1>
-  <button mat-raised-button color="primary" (click)="openDialog()">Add User</button>
+  <button mat-raised-button color="primary" (click)="openDialog()" style="margin-bottom: 24px">Add User</button>
+  <div>
+    <mat-form-field>
+      <input type="search" matInput placeholder="Search by name.." (input)="searchTable()" [(ngModel)]="searchText"/>
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
 
-  <table mat-table [dataSource]="dataSource">
+  <table mat-table [dataSource]="filteredList || dataSource">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> User Name </th>
       <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}} </td>
@@ -38,4 +44,5 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <mat-paginator pageSize="10" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
 </section>
