@@ -5,7 +5,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { AuthGuard } from './Guard/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home/crud', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, loadChildren: () => import('./Components/home/home.module').then(m => m.HomeModule), canActivate: [AuthGuard] },
   { path: 'auth', component: AuthComponent, loadChildren: () => import('./Components/auth/auth.module').then(m => m.AuthModule) },
 ];
