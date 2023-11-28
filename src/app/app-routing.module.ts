@@ -5,13 +5,13 @@ import { HomeComponent } from './Components/home/home.component';
 import { AuthGuard } from './Guard/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home/crud', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, loadChildren: () => import('./Components/home/home.module').then(m => m.HomeModule), canActivate: [AuthGuard] },
-  { path: 'auth', component: AuthComponent, loadChildren: () => import('./Components/auth/auth.module').then(m => m.AuthModule) },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', component: HomeComponent, loadChildren: () => import('./Components/home/home.module').then(m => m.HomeModule), canActivate: [AuthGuard] },
+  { path: 'auth', component: AuthComponent, loadChildren: () => import('./Components/auth/auth.module').then(m => m.AuthModule) }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
