@@ -5,9 +5,9 @@ import { AboutComponent } from './about/about.component';
 import { CrudComponent } from './crud/crud.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'crud', pathMatch: 'full' },
-  { path: 'crud', component: CrudComponent },
-  { path: 'about', component: AboutComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: CrudComponent },
+  { path: 'dict', component: AboutComponent },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
