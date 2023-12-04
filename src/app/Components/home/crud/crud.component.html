@@ -3,12 +3,12 @@
   <button mat-raised-button color="primary" (click)="openDialog()" style="margin-bottom: 24px">Add User</button>
   <div>
     <mat-form-field>
-      <input type="search" matInput placeholder="Search by name.." (input)="searchTable()" [(ngModel)]="searchText"/>
+      <input type="search" matInput placeholder="Search by name.." (keyup)="searchTable($event)" [(ngModel)]="searchText"/>
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </div>
 
-  <table mat-table [dataSource]="filteredList || dataSource">
+  <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> User Name </th>
       <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}} </td>

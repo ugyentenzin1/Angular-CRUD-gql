@@ -15,7 +15,7 @@ export interface IUser {
 })
 export class UserService {
 
-  url: string = 'https://eshan-test-default-rtdb.firebaseio.com/users.json '
+  url: string = 'https://eshan-test-default-rtdb.firebaseio.com/users.json'
   constructor(private _http: HttpClient) { }
 
   addUser(formData: any): Observable<IUser[]> {

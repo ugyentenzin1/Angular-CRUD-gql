@@ -14,7 +14,6 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class CrudComponent implements OnInit {
 
-  // dataSource: IUser[] = [];
   dataSource!: MatTableDataSource<IUser>;
   displayedColumns: string[] = ['name', 'gender', 'role', 'review', 'actions'];
   searchText!: string;
@@ -34,7 +33,6 @@ export class CrudComponent implements OnInit {
     this._userService.getUsers().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator; // Set the length for pagination
-      this.searchTable();
     })
   }
 
@@ -52,11 +50,8 @@ export class CrudComponent implements OnInit {
     }).afterClosed().subscribe(val => val && this.getUserList());
   }
 
-  searchTable(): void {
-    this.filteredList = this.dataSource?.filteredData.filter((user:any) =>
-      user.firstName.toLowerCase().includes(this.searchText.toLowerCase()) ||
-      user.lastName.toLowerCase().includes(this.searchText.toLowerCase())
-    );
+  searchTable(event: Event) {
+    this.dataSource.filter = (event.target as HTMLInputElement).value.trim().toLowerCase();
   }
-
+  
 }
