@@ -38,7 +38,11 @@ export class UserService {
     return this._http.put<IUser[]>(`https://eshan-test-default-rtdb.firebaseio.com/users/${id}.json`, formData)
   }
 
-  deleteUser(id: string): Observable<IUser[]> {
-    return this._http.delete<IUser[]>(`https://eshan-test-default-rtdb.firebaseio.com/users/${id}.json`)
+  deleteUser(id: string): Observable<IUser> {
+    return this._http.delete<IUser>(`https://eshan-test-default-rtdb.firebaseio.com/users/${id}.json`)
+  }
+
+  getUserById(id: string): Observable<IUser> {
+    return  this._http.get<IUser>(`https://eshan-test-default-rtdb.firebaseio.com/users/${id}.json`)
   }
 }

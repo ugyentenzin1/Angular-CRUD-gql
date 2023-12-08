@@ -6,6 +6,7 @@ import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dial
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crud',
@@ -23,7 +24,7 @@ export class CrudComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(public dialog: MatDialog, private _userService: UserService) { }
+  constructor(public dialog: MatDialog, private _userService: UserService, private _router: Router) { }
 
   ngOnInit(): void {
     this.getUserList();
@@ -52,6 +53,10 @@ export class CrudComponent implements OnInit {
 
   searchTable(event: Event) {
     this.dataSource.filter = (event.target as HTMLInputElement).value.trim().toLowerCase();
+  }
+
+  gotoProfile(tableRow: any) {
+    this._router.navigate(['profile/' + tableRow.id])
   }
   
 }
