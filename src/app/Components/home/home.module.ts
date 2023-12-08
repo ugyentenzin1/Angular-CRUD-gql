@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { DeleteUserDialogComponent } from './crud/delete-user-dialog/delete-user-dialog.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatSortModule } from '@angular/material/sort';
     AboutComponent,
     CrudComponent,
     AddUserDialogComponent,
-    DeleteUserDialogComponent
+    DeleteUserDialogComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

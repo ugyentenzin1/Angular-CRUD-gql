@@ -1,0 +1,6 @@
+<section *ngIf="userProfile" style="padding: 32px">
+    <h1>Welcome <span style="color: red">{{userProfile.firstName}} {{userProfile.lastName}}</span></h1>
+    <h2>{{userProfile.role}} ({{userProfile.gender}})</h2>
+
+    <h4>Review: {{userProfile.review}}</h4>
+</section>
