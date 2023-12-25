@@ -13,23 +13,25 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    GraphQLModule,
-    HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    MatSnackBarModule,
-    MatIconModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        GraphQLModule,
+        HttpClientModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatSnackBarModule,
+        MatIconModule,
+        MatButtonModule
+    ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],

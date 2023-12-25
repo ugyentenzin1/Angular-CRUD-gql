@@ -20,6 +20,7 @@ import { DeleteUserDialogComponent } from './crud/delete-user-dialog/delete-user
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ProfileComponent } from './profile/profile.component';
+import { AddUsersComponent } from './crud/add-users/add-users.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProfileComponent } from './profile/profile.component';
     CrudComponent,
     AddUserDialogComponent,
     DeleteUserDialogComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddUsersComponent
   ],
   imports: [
     CommonModule,
