@@ -9,7 +9,7 @@
         <p><span style="margin-right: 8px">Phone: </span>{{item.phone}}</p>
         <p><span style="margin-right: 8px">Email: </span>{{item.email}}</p>
         <button mat-button style="margin-top: 10px; background: yellowgreen; color: white"
-        (click)="deleteUser(i)">Delete</button>
+                (click)="deleteUser(i)">Delete</button>
       </div>
 
     </div>
@@ -51,6 +51,35 @@
 
 
   </div>
-
 </div>
+
+<div style="display: flex; margin-top: 100px; justify-content: center;">
+  <div style="width: 80%; display: flex; flex-direction: column; justify-content: center; align-items: center">
+
+    <form [formGroup]="formGraph" style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center">
+      <mat-form-field style="width: 40%">
+        <input matInput placeholder="Name" label="Name" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field style="width: 40%">
+        <input matInput placeholder="email" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field style="width: 40%">
+        <textarea matInput rows="5" placeholder="comment" formControlName="body"></textarea>
+      </mat-form-field>
+    </form>
+
+    <button (click)="updateComment()"
+            color="primary" style="display: flex; justify-content: center; align-items: center" mat-raised-button>
+      <mat-icon>update</mat-icon>
+      <span>Add Users </span>
+    </button>
+
+
+  </div>
+</div>
+
+
+
 

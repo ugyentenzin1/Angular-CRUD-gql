@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { GET_POSTS } from './graphql.operations';
-import {map, Observable} from "rxjs";
+import {CREATE_COMMENTS, GET_POSTS} from './graphql.operations';
+import {map, Observable, tap} from "rxjs";
 
 
-interface Post {
-  name: string;
+interface  users  {
+  id: string,
+  email: string,
+  name: string
 }
 
 @Component({
@@ -16,10 +18,11 @@ interface Post {
 
 export class AppComponent implements OnInit {
   title = 'graphql';
-  posts: Post[] = [];
 
 
-  graphBinding : any;
+  graphBinding!: any[];
+
+  comment:any[] = [];
 
   constructor(private apollo: Apollo) { }
 
@@ -31,16 +34,33 @@ export class AppComponent implements OnInit {
     //   this.posts = res.data.posts;
     // })
 
-    this.getData('').subscribe(res  => this.graphBinding = res.data);
+    // this.updateData('8db57b8f-be09-4e07-a1f6-4fb77d9b16e7', true).subscribe(
+    //   res => console.log(res, 'test failed')
+    // )
 
+    console.log(this.comment);
   };
 
 
-  getData(country: string): Observable<any> {
-    return this.apollo.query<Post>({
+  getCommentById(id: string) {
+    this.getData(id).subscribe(res=> {this.comment.push(res);
+    console.log(this.comment, res, 'test')});
+
+  }
+
+  getData(id: string): Observable<any[]> {
+    return this.apollo.query<any[]>({
       query: GET_POSTS,
-      variables: {country},
+      variables: {commentId: id},
       fetchPolicy: 'no-cache'
     }).pipe(map(res => res.data));
+  }
+
+  updateData(id: string, checked: boolean): Observable<any> {
+    return this.apollo.mutate({
+      mutation: CREATE_COMMENTS,
+      variables: {input : {id, checked}},
+      fetchPolicy: 'no-cache'
+    }).pipe(map(res => res.data))
   }
 }

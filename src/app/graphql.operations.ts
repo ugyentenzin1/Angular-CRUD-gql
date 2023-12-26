@@ -1,17 +1,27 @@
 import { gql } from 'apollo-angular';
 
 const GET_POSTS = gql`
- query Query {
-  country(code: "BR") {
+query GetComment($commentId: ID!) {
+  comment(id: $commentId) {
+    body
+    email
+    id
     name
-    emoji
-    currency
-    languages {
-      code
-      name
+    post {
+      body
     }
   }
 }
 `
+const CREATE_COMMENTS = gql`
+mutation createComment($input: CreateCommentInput!) {
+  createComment(input: $input) {
+    id
+    name
+    email
+    body
+  }
+}
+`
 
-export { GET_POSTS };
+export { GET_POSTS, CREATE_COMMENTS };
