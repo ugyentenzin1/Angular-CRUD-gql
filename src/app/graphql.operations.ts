@@ -57,4 +57,30 @@ mutation DeleteUser($deleteUserId: ID!) {
   deleteUser(id: $deleteUserId)
 }
 `
+
+export const UPDATE_USERS = gql`
+mutation UpdateUser($updateUserId: ID!, $updateUserInput2: UpdateUserInput!) {
+  updateUser(id: $updateUserId, input: $updateUserInput2) {
+    id
+    name
+    phone
+    email
+    website
+    username
+  }
+}
+`
+
+export const GET_USER_BY_ID = gql`
+query User($userId: ID!) {
+  user(id: $userId) {
+    id
+    name
+    phone
+    website
+    username
+    email
+  }
+}
+`
 export { GET_POSTS, CREATE_COMMENTS };

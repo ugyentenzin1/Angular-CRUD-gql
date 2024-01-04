@@ -1,0 +1,34 @@
+<div style="padding: 24px">
+  <h3>Edit Users</h3>
+
+  <form [formGroup]="form" style="display: flex; flex-direction: column">
+    <mat-form-field>
+      <input matInput placeholder="name" label="Name"
+             formControlName="name">
+    </mat-form-field>
+    <p *ngIf="form.get('name')?.touched && form.get('name')?.invalid" style="color: red; font-size: 12px; margin-top: -14px">Name Required*</p>
+    <mat-form-field>
+      <input matInput placeholder="phone" label="phone" formControlName="phone">
+    </mat-form-field>
+    <p *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid" style="color: red; font-size: 12px; margin-top: -14px">Age Required*</p>
+    <mat-form-field>
+      <input matInput placeholder="username" label="username"
+             formControlName="username">
+    </mat-form-field>
+    <p *ngIf="form.get('username')?.touched && form.get('username')?.invalid" style="color: red; font-size: 12px; margin-top: -14px">Email Required*</p>
+    <mat-form-field>
+      <input matInput placeholder="website" label="website" formControlName="website">
+    </mat-form-field>
+    <p *ngIf="form.get('website')?.touched && form.get('website')?.invalid" style="color: red; font-size: 12px; margin-top: -14px">Phone Required*</p>
+    <mat-form-field>
+      <input matInput placeholder="email" label="email" formControlName="email">
+    </mat-form-field>
+    <p *ngIf="form.get('email')?.touched && form.get('email')?.invalid" style="color: red; font-size: 12px; margin-top: -14px">School Required*</p>
+  </form>
+  <button (click)="saveChanges(data.id, form.value)" type="submit" [disabled]="form.invalid"
+          color="primary" style="display: flex; justify-content: center; align-items: center" mat-raised-button>
+    <mat-icon>user</mat-icon>
+    <span>Save Changes </span>
+  </button>
+</div>
+

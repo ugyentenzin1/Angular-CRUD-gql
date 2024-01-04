@@ -25,6 +25,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import { UsersComponent } from './crud/users/users.component';
 import {MatRippleModule} from "@angular/material/core";
 import { CreateUsersComponent } from './crud/users/create-users/create-users.component';
+import { EditUsersComponent } from './crud/users/edit-users/edit-users.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CreateUsersComponent } from './crud/users/create-users/create-users.com
     ProfileComponent,
     AddUsersComponent,
     UsersComponent,
-    CreateUsersComponent
+    CreateUsersComponent,
+    EditUsersComponent
   ],
     imports: [
         CommonModule,

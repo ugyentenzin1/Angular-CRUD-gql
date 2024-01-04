@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable, map, tap, mapTo} from 'rxjs'
-import {CREATE_USERS, DELETE_USERS, GET_USERS} from "../graphql.operations";
+import {CREATE_USERS, DELETE_USERS, GET_USER_BY_ID, GET_USERS, UPDATE_USERS} from "../graphql.operations";
 import {Apollo} from "apollo-angular";
 import {CoreService} from "./core.service";
 
@@ -67,6 +67,17 @@ export class UserService {
     }).pipe(map(val => val.data))
   }
 
+
+  getUserBysId(id: any) : Observable<any> {
+    return this.apollo.query({
+      query: GET_USER_BY_ID,
+      variables: {userId: id},
+      fetchPolicy:'no-cache'
+    }).pipe(
+      map(val => val.data)
+    )
+  }
+
   addUsers(data: Users[]): Observable<boolean> {
     return this.apollo.mutate({
       mutation: CREATE_USERS,
@@ -86,6 +97,21 @@ export class UserService {
       fetchPolicy: 'no-cache'
     }).pipe(
       tap(() => this.coreService.openSnackBar('User Deleted Successfully')),
+      map(value => value.data),
+      mapTo(true)
+    )
+  }
+
+  editUser(id: any, newValue: any): Observable<any> {
+    return this.apollo.mutate({
+      mutation: UPDATE_USERS,
+      fetchPolicy: 'no-cache',
+      variables: {
+        updateUserId: id,
+        updateUserInput2: newValue
+      }
+    }).pipe(
+      tap(() => this.coreService.openSnackBar('Updated Successfully')),
       map(value => value.data),
       mapTo(true)
     )

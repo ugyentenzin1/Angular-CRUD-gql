@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {CreateUsersComponent} from "./create-users/create-users.component";
 import {UserService} from "../../../../Services/user.service";
 import {user} from "@angular/fire/auth";
+import {EditUsersComponent} from "./edit-users/edit-users.component";
 
 interface Users {
   gender: string,
@@ -45,11 +46,21 @@ export class UsersComponent implements OnInit{
       .subscribe(val => this.users = val.users.data);
   }
 
+  editUserDialog(id: any) {
+    this.dialog.open(EditUsersComponent, {
+      width: '600px',
+      data: {
+       id: id,
+        value: this.users.find(val => val.id === id)
+      }
+    }).afterClosed().
+      pipe(switchMap(()=> this.userService.getUserBysId(id))).
+    subscribe()
+  }
+
   removeUser(id: any) {
     this.userService.removeUser(id).pipe(
       switchMap(() => this.userService.getUser())
     ).subscribe(val => console.log(val, 'done'))
   }
-
-  protected readonly user = user;
 }
