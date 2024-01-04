@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { catchError, of } from 'rxjs';
 
 @Component({
@@ -36,4 +36,7 @@ export class AboutComponent {
     //   if (data) this.results = data;
     // })
   }
+
+  show!: boolean;
+
 }

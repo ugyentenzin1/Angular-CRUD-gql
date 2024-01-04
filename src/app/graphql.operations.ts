@@ -24,4 +24,31 @@ mutation createComment($input: CreateCommentInput!) {
 }
 `
 
+export const GET_USERS =  gql`
+query Users {
+  users {
+    data {
+      id
+      name
+      phone
+      username
+      website
+      email
+    }
+  }
+}
+`
+
+export const CREATE_USERS = gql`
+mutation CreateUser($input: CreateUserInput!) {
+  createUser(input: $input) {
+    id
+    name
+    phone
+    username
+    website
+    email
+  }
+}
+`
 export { GET_POSTS, CREATE_COMMENTS };

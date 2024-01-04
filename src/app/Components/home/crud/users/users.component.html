@@ -1,0 +1,73 @@
+<div style="display:  flex; flex-direction: column; padding: 20px;
+background: #a8dab5;
+">
+
+  <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center">
+    <div>
+      <h1>Users</h1>
+      <p style="color: black; font-size: 16px; margin-bottom: 16px">Learning crud operation with graphql and apollo (small mini-project of user management)!!</p>
+    </div>
+    <button mat-raised-button (click)="addUserSDialog()">
+      <mat-icon>add</mat-icon>
+      <mat-label>Add Users</mat-label>
+    </button>
+  </div>
+  <table mat-table [dataSource]="users">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Gender </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="website">
+    <th mat-header-cell *matHeaderCellDef> Website </th>
+    <td mat-cell *matCellDef="let element"> {{element.website}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <button title="Edit User" mat-icon-button color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button title="Delete User" mat-icon-button style="color: red">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <tr *matNoDataRow>
+      <td colspan="6">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 64px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="110" height="123" viewBox="0 0 110 123" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M25.8051 53.37C25.0704 53.37 24.3659 53.6619 23.8464 54.1813C23.3269 54.7008 23.0351 55.4054 23.0351 56.14C23.0351 56.8747 23.3269 57.5792 23.8464 58.0987C24.3659 58.6182 25.0704 58.91 25.8051 58.91H45.9151C46.6497 58.91 47.3543 58.6182 47.8738 58.0987C48.3932 57.5792 48.6851 56.8747 48.6851 56.14C48.6851 55.4054 48.3932 54.7008 47.8738 54.1813C47.3543 53.6619 46.6497 53.37 45.9151 53.37H25.8051ZM86.2851 16.47L92.9451 23.16L84.9451 31.3L92.9451 39.44L86.2751 46.1L78.2751 38.01L70.2751 46.11L63.6651 39.43L71.6651 31.29L63.6651 23.14L70.3351 16.49L78.3351 24.57L86.3351 16.47H86.2851ZM78.4351 2.05447e-05C85.445 0.012205 92.2426 2.40678 97.7125 6.79081C103.182 11.1749 107 17.288 108.538 24.127C110.076 30.9661 109.244 38.125 106.178 44.4289C103.112 50.7329 97.9947 55.8075 91.6651 58.82V116.51C91.6624 118.199 90.9904 119.817 89.7964 121.011C88.6024 122.205 86.9837 122.877 85.2951 122.88H7.03507C5.34645 122.877 3.72776 122.205 2.53372 121.011C1.33969 119.817 0.667715 118.199 0.66507 116.51V22.4C0.66244 21.5613 0.825192 20.7304 1.14401 19.9547C1.46284 19.179 1.93147 18.4737 2.52311 17.8793C3.11475 17.2849 3.81779 16.8129 4.592 16.4904C5.3662 16.168 6.19639 16.0013 7.03507 16H51.3351C54.0038 11.1493 57.9272 7.10489 62.6947 4.29012C67.4622 1.47535 72.8986 -0.00636383 78.4351 2.05447e-05ZM86.2151 60.81C80.8657 62.1971 75.2423 62.1251 69.9302 60.6016C64.618 59.078 59.8113 56.1587 56.0102 52.1472C52.2091 48.1358 49.5525 43.179 48.317 37.7925C47.0815 32.4061 47.3122 26.787 48.9851 21.52H7.03507C6.79911 21.5208 6.57287 21.6141 6.40507 21.78C6.24095 21.949 6.14789 22.1745 6.14507 22.41V116.5C6.14507 116.736 6.23884 116.962 6.40575 117.129C6.57265 117.296 6.79903 117.39 7.03507 117.39H85.3151C85.551 117.389 85.7773 117.296 85.9451 117.13C86.1092 116.961 86.2023 116.736 86.2051 116.5V60.81H86.2151ZM25.8051 92.22C25.0784 92.22 24.3814 92.5087 23.8676 93.0226C23.3537 93.5364 23.0651 94.2333 23.0651 94.96C23.0651 95.6867 23.3537 96.3837 23.8676 96.8975C24.3814 97.4113 25.0784 97.7 25.8051 97.7H64.2751C65.0018 97.7 65.6987 97.4113 66.2125 96.8975C66.7264 96.3837 67.0151 95.6867 67.0151 94.96C67.0151 94.2333 66.7264 93.5364 66.2125 93.0226C65.6987 92.5087 65.0018 92.22 64.2751 92.22H25.8051ZM25.8051 72.81C25.0784 72.81 24.3814 73.0987 23.8676 73.6125C23.3537 74.1264 23.0651 74.8233 23.0651 75.55C23.0651 76.2767 23.3537 76.9736 23.8676 77.4875C24.3814 78.0013 25.0784 78.29 25.8051 78.29H64.2751C65.0018 78.29 65.6987 78.0013 66.2125 77.4875C66.7264 76.9736 67.0151 76.2767 67.0151 75.55C67.0151 74.8233 66.7264 74.1264 66.2125 73.6125C65.6987 73.0987 65.0018 72.81 64.2751 72.81H25.8051Z" fill="black" fill-opacity="0.12"/>
+          </svg>
+          <h1 style="color: rgba(0,0,0,0.6); margin: 16px 0;">Sorry No data :(</h1>
+        </div>
+      </td>
+    </tr>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

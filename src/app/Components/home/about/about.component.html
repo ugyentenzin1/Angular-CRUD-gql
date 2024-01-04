@@ -34,4 +34,22 @@
   <ng-template #noResult>
     <h1>{{errorMessage}}</h1>
   </ng-template>
+
+  <mat-checkbox [checked]="show" #input></mat-checkbox>
+  <mat-label style="margin-left: 8px">All buildings</mat-label>
+
+  <div *ngIf="input.checked else emptyMessage" style="margin-top: 16px">
+    <mat-form-field>
+      <input matInput type="date" placeholder="Update the date">
+    </mat-form-field>
+    <button mat-raised-button>
+      <mat-icon>update</mat-icon>
+      <mat-label>Update</mat-label>
+    </button>
+  </div>
+
+  <ng-template #emptyMessage>
+    <h1>You cannot update the building date</h1>
+  </ng-template>
+
 </section>

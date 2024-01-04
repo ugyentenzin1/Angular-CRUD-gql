@@ -21,6 +21,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ProfileComponent } from './profile/profile.component';
 import { AddUsersComponent } from './crud/add-users/add-users.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { UsersComponent } from './crud/users/users.component';
+import {MatRippleModule} from "@angular/material/core";
+import { CreateUsersComponent } from './crud/users/create-users/create-users.component';
 
 @NgModule({
   declarations: [
@@ -30,25 +34,29 @@ import { AddUsersComponent } from './crud/add-users/add-users.component';
     AddUserDialogComponent,
     DeleteUserDialogComponent,
     ProfileComponent,
-    AddUsersComponent
+    AddUsersComponent,
+    UsersComponent,
+    CreateUsersComponent
   ],
-  imports: [
-    CommonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    RouterModule,
-    HomeRoutingModule,
-    MatDialogModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatRadioModule,
-    MatTableModule,
-    FormsModule,
-    MatPaginatorModule,
-    MatSortModule
-  ]
+    imports: [
+        CommonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        RouterModule,
+        HomeRoutingModule,
+        MatDialogModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatRadioModule,
+        MatTableModule,
+        FormsModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatCheckboxModule,
+        MatRippleModule
+    ]
 })
 export class HomeModule { }
