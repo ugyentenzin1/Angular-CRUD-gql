@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable, map, tap, mapTo} from 'rxjs'
-import {CREATE_USERS, GET_USERS} from "../graphql.operations";
+import {CREATE_USERS, DELETE_USERS, GET_USERS} from "../graphql.operations";
 import {Apollo} from "apollo-angular";
 import {CoreService} from "./core.service";
 
@@ -77,5 +77,17 @@ export class UserService {
       map(value => value.data),
       mapTo(true)
     );
+  }
+
+  removeUser(id: any): Observable<boolean> {
+    return this.apollo.mutate({
+      mutation: DELETE_USERS,
+      variables: {deleteUserId: id},
+      fetchPolicy: 'no-cache'
+    }).pipe(
+      tap(() => this.coreService.openSnackBar('User Deleted Successfully')),
+      map(value => value.data),
+      mapTo(true)
+    )
   }
 }

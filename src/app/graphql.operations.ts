@@ -51,4 +51,10 @@ mutation CreateUser($input: CreateUserInput!) {
   }
 }
 `
+
+export const DELETE_USERS = gql`
+mutation DeleteUser($deleteUserId: ID!) {
+  deleteUser(id: $deleteUserId)
+}
+`
 export { GET_POSTS, CREATE_COMMENTS };

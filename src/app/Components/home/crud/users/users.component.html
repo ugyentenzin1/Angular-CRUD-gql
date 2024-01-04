@@ -49,7 +49,7 @@ background: #a8dab5;
         <button title="Edit User" mat-icon-button color="primary">
           <mat-icon>edit</mat-icon>
         </button>
-        <button title="Delete User" mat-icon-button style="color: red">
+        <button (click)="removeUser(element.id)" title="Delete User" mat-icon-button style="color: red">
           <mat-icon>delete</mat-icon>
         </button>
       </td>
