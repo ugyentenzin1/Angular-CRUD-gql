@@ -51,7 +51,7 @@ export class UsersComponent implements OnInit{
       width: '600px',
       data: {
        id: id,
-        value: this.users.find(val => val.id === id)
+        value: this.users.find(val => val.id === id),
       }
     }).afterClosed().
       pipe(switchMap(()=> this.userService.getUserBysId(id))).

@@ -25,6 +25,11 @@ export class EditUsersComponent implements OnInit{
       website: [this.data.value.website, Validators.required],
       email: [this.data.value.email, Validators.required]
     })
+    this.data.value && this.patchData();
+  }
+
+  patchData(): void {
+    this.form.patchValue(this.data.value);
   }
 
   saveChanges(id: any, newValue: any) {
