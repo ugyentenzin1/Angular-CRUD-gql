@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatTableDataSource} from "@angular/material/table";
 import {BehaviorSubject, map, Observable, of} from "rxjs";
@@ -20,22 +20,21 @@ interface data {
 })
 export class AddUsersComponent implements OnInit{
 
-
   constructor(private fb: FormBuilder, private apollo: Apollo) {
 
   }
 
-  data: data[] = [{name:"Ugyen Tenzin", age: "20", email: "ugyen", phone: 'sadf', school: "asdf"}];
+  data: data[] = [{name: 'Ugyen', email: 'ugyen@gmail.com', phone: '1232323', age: '20', school: 'yhss'}];
 
   displayedColumns = ['name', 'age', 'email', 'phone', 'school']
 
   form!: FormGroup;
 
   formGraph!: FormGroup;
-  newData?: MatTableDataSource<data>;
 
 
   ngOnInit(): void {
+
 
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -50,10 +49,13 @@ export class AddUsersComponent implements OnInit{
       email: '',
       body: ''
     })
+
+    this.data = JSON.parse(localStorage.getItem('value')!);
   }
 
   addUsers(): void {
     this.data.unshift(this.form?.value);
+    localStorage.setItem('value', JSON.stringify(this.data));
   }
 
   deleteUser(id: number): void {

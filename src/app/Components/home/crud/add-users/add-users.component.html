@@ -3,13 +3,12 @@
     <div style="height: 400px; overflow: scroll">
       <div *ngFor="let item of data; let i = index;" style="padding: 16px; background: #9575cd; color: white
     ; border-radius: 8px; box-shadow: #333333 2px 2px; margin-top: 10px">
-        <p><span style="margin-right: 8px">Name: </span>{{item.name}}</p>
-        <p><span style="margin-right: 8px">Age: </span>{{item.age}}</p>
-        <p><span style="margin-right: 8px">School: </span>{{item.school}}</p>
-        <p><span style="margin-right: 8px">Phone: </span>{{item.phone}}</p>
-        <p><span style="margin-right: 8px">Email: </span>{{item.email}}</p>
-        <button mat-button style="margin-top: 10px; background: yellowgreen; color: white"
-                (click)="deleteUser(i)">Delete</button>
+        <p><span style="margin-right: 8px">Name: </span>{{item?.name}}</p>
+        <p><span style="margin-right: 8px">Age: </span>{{item?.age}}</p>
+        <p><span style="margin-right: 8px">School: </span>{{item?.school}}</p>
+        <p><span style="margin-right: 8px">Phone: </span>{{item?.phone}}</p>
+        <p><span style="margin-right: 8px">Email: </span>{{item?.email}}</p>
+        <button mat-button style="margin-top: 10px; background: yellowgreen; color: white" (click)="deleteUser(i)">Delete</button>
       </div>
 
     </div>
