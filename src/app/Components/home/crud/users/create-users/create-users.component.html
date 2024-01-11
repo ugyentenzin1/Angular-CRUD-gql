@@ -10,20 +10,20 @@
     <mat-form-field>
       <input matInput placeholder="phone" label="phone" formControlName="phone">
     </mat-form-field>
-    <p *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid" style="color: red; font-size: 12px; margin-top: -14px">Age Required*</p>
+    <p *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid" style="color: red; font-size: 12px; margin-top: -14px">Phone Required*</p>
     <mat-form-field>
       <input matInput placeholder="username" label="username"
              formControlName="username">
     </mat-form-field>
-    <p *ngIf="form.get('username')?.touched && form.get('username')?.invalid" style="color: red; font-size: 12px; margin-top: -14px">Email Required*</p>
+    <p *ngIf="form.get('username')?.touched && form.get('username')?.invalid" style="color: red; font-size: 12px; margin-top: -14px">Username Required*</p>
     <mat-form-field>
       <input matInput placeholder="website" label="website" formControlName="website">
     </mat-form-field>
-    <p *ngIf="form.get('website')?.touched && form.get('website')?.invalid" style="color: red; font-size: 12px; margin-top: -14px">Phone Required*</p>
+    <p *ngIf="form.get('website')?.touched && form.get('website')?.invalid" style="color: red; font-size: 12px; margin-top: -14px">Website Required*</p>
     <mat-form-field>
       <input matInput placeholder="email" label="email" formControlName="email">
     </mat-form-field>
-    <p *ngIf="form.get('email')?.touched && form.get('email')?.invalid" style="color: red; font-size: 12px; margin-top: -14px">School Required*</p>
+    <p *ngIf="form.get('email')?.touched && form.get('email')?.invalid" style="color: red; font-size: 12px; margin-top: -14px">Email Required*</p>
   </form>
   <button type="submit" [disabled]="form.invalid" (click)="addUsers(form.value)"
           color="primary" style="display: flex; justify-content: center; align-items: center" mat-raised-button>
